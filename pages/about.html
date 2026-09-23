@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — YummyShare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="blog.html">Blogs</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="leftover.html">Leftovers</a>
+      <a href="create-recipe.html">Create</a>
+      <a href="about.html" aria-current="page">About Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" id="navAuthLink" class="btn btn-secondary" style="padding:.6rem 1.3rem;">Login</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section split" style="padding-bottom:2rem;">
+    <div>
+      <span class="eyebrow">Our story</span>
+      <h1>Cooking is better shared</h1>
+      <p>YummyShare started as a simple question: why do so many good recipes stay trapped in one kitchen? We built a home for recipes from Indian, Italian, Japanese and Korean cooking traditions, written by people who actually cook them — and a tool to help you use up what's already in your fridge before it goes to waste.</p>
+      <p>Every recipe on this site includes real ingredient lists, numbered steps and a cooking video, because reading a recipe and being able to cook it are two different skills.</p>
+    </div>
+    <div class="plate" style="width:100%;max-width:320px;justify-self:center;"><span class="plate-food"><img src="../images/chef.png"></span></div>
+  </section>
+
+  <section class="section section--panel">
+    <div class="container">
+      <span class="eyebrow">What we're working towards</span>
+      <h2>Our objectives</h2>
+      <div class="value-grid mt-lg">
+        <article class="value-card"><div class="icon-badge">🔎</div><h3>Effortless discovery</h3><p>Search and filter recipes by cuisine, ingredient or keyword in real time.</p></article>
+        <article class="value-card"><div class="icon-badge">🥕</div><h3>Less food waste</h3><p>Suggest recipes ranked by how many ingredients you already have on hand.</p></article>
+        <article class="value-card"><div class="icon-badge">🎬</div><h3>Cook with confidence</h3><p>Pair every recipe with clear instructions and a short cooking video.</p></article>
+        <article class="value-card"><div class="icon-badge">🌍</div><h3>A shared table</h3><p>Bring Indian, Italian, Japanese and Korean cooking traditions onto one platform.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section text-center">
+    <div class="container">
+      <span class="eyebrow">By the numbers</span>
+      <h2>A growing community of home cooks</h2>
+      <div class="value-grid mt-lg" id="aboutStats">
+        <div class="value-card"><strong style="font-size:2rem;font-family:var(--font-heading);" data-count="13">0</strong><p>Recipes published</p></div>
+        <div class="value-card"><strong style="font-size:2rem;font-family:var(--font-heading);" data-count="4">0</strong><p>Cuisines covered</p></div>
+        <div class="value-card"><strong style="font-size:2rem;font-family:var(--font-heading);" data-count="2600">0</strong><p>Cooks reached</p></div>
+        <div class="value-card"><strong style="font-size:2rem;font-family:var(--font-heading);" data-count="92">0</strong><p>% would recommend</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom"><span>© 2026 YummyShare.</span></div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  // Animated counters (DOM Manipulation), reused pattern from the homepage
+  const els = document.querySelectorAll('#aboutStats strong[data-count]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const start = performance.now();
+      const duration = 900;
+      function step(now) {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(p * target).toLocaleString();
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: .4 });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
