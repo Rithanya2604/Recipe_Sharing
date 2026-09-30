@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipes — YummyShare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="blog.html">Blogs</a>
+      <a href="recipes.html" aria-current="page">Recipes</a>
+      <a href="leftover.html">Leftovers</a>
+      <a href="create-recipe.html">Create</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" id="navAuthLink" class="btn btn-secondary" style="padding:.6rem 1.3rem;">Login</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:1.5rem;">
+    <div class="container">
+      <!-- HTML5 search input type -->
+      <label for="recipeSearch" class="eyebrow" style="display:block;margin-bottom:.8rem;">Find something delicious</label>
+      <div class="search-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="recipeSearch" placeholder="Search recipes, cuisines, ingredients" aria-label="Search recipes">
+        <button class="btn btn-primary" id="searchBtn" style="padding:.65rem 1.4rem;">Search</button>
+      </div>
+      <div class="filter-row" id="cuisineFilters" role="group" aria-label="Filter by cuisine">
+        <button class="chip is-active" data-cuisine="all">All Cuisines</button>
+        <button class="chip" data-cuisine="indian">Indian</button>
+        <button class="chip" data-cuisine="italian">Italian</button>
+        <button class="chip" data-cuisine="japanese">Japanese</button>
+        <button class="chip" data-cuisine="korean">Korean</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <h2 id="resultsHeading">Indian Cuisine</h2>
+      <p id="resultsSubline" class="muted">Explore delicious Indian recipes</p>
+      <p id="resultsCount" class="pill-note" style="margin-bottom:1.4rem;"></p>
+      <div class="card-grid" id="recipeGrid"></div>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <p>No recipes match your search. Try a different ingredient or cuisine.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="../index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+      <p style="color:#B7B2A8;">A place to discover, cook and share recipes from kitchens around the world.</p>
+    </div>
+    <div><h4>Explore</h4><a href="recipes.html">Recipes</a><a href="blog.html">Blogs</a><a href="create-recipe.html">Create</a></div>
+    <div><h4>Company</h4><a href="about.html">About Us</a><a href="leftover.html">Leftover Finder</a><a href="login.html">Login</a></div>
+  </div>
+  <div class="container footer-bottom"><span>© 2026 YummyShare.</span></div>
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/icons.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/recipes.js"></script>
+</body>
+</html>

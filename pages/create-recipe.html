@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create a Recipe — YummyShare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="blog.html">Blogs</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="leftover.html">Leftovers</a>
+      <a href="create-recipe.html" aria-current="page">Create</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" id="navAuthLink" class="btn btn-secondary" style="padding:.6rem 1.3rem;">Login</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:1rem;">
+    <div class="container">
+      <span class="eyebrow">Share your creation</span>
+      <h1>Upload Your Recipe</h1>
+      <p>Fill in the details below — required fields are validated as you type.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container split">
+      <div class="form-panel">
+        <div class="form-success" id="createSuccess">✓ <span>Published! Your recipe now appears in "My Recipes" below, on the <a href="recipes.html" style="color:inherit;text-decoration:underline;">Recipes page</a>, and on your Profile.</span></div>
+        <form id="recipeForm" novalidate>
+
+          <div class="field" id="f-title">
+            <label for="title">Recipe Title</label>
+            <input type="text" id="title" name="title" placeholder="e.g. Grandma's Butter Chicken" required minlength="3">
+            <p class="error-msg">Enter a title with at least 3 characters.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field" id="f-cuisine">
+              <label for="cuisine">Cuisine</label>
+              <select id="cuisine" name="cuisine" required>
+                <option value="">Select a cuisine</option>
+                <option value="indian">Indian</option>
+                <option value="italian">Italian</option>
+                <option value="japanese">Japanese</option>
+                <option value="korean">Korean</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="error-msg">Please choose a cuisine.</p>
+            </div>
+            <div class="field" id="f-difficulty">
+              <label for="difficulty">Difficulty</label>
+              <select id="difficulty" name="difficulty" required>
+                <option value="">Select difficulty</option>
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+              </select>
+              <p class="error-msg">Please choose a difficulty.</p>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" id="f-time">
+              <label for="time">Cook time (minutes)</label>
+              <input type="number" id="time" name="time" min="5" max="240" step="5" placeholder="30" required>
+              <p class="error-msg">Enter a time between 5 and 240 minutes.</p>
+            </div>
+            <div class="field" id="f-date">
+              <label for="madeOn">Date first cooked</label>
+              <input type="date" id="madeOn" name="madeOn">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="servings">Servings <span id="servingsOut">4</span></label>
+            <input type="range" id="servings" name="servings" min="1" max="12" value="4">
+          </div>
+
+          <div class="field" id="f-website">
+            <label for="source">Source link (optional)</label>
+            <input type="url" id="source" name="source" placeholder="https://your-blog.com/recipe">
+            <p class="error-msg">Enter a valid URL starting with http(s)://</p>
+          </div>
+
+          <div class="field" id="f-email">
+            <label for="contact">Your contact email</label>
+            <input type="email" id="contact" name="contact" placeholder="chef@example.com" required>
+            <p class="error-msg">Enter a valid email address.</p>
+          </div>
+
+          <div class="field">
+            <label for="photo">Recipe photo</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <div id="photoPreview" style="margin-top:.8rem;"></div>
+          </div>
+
+          <div class="field" id="f-ingredients">
+            <label>Ingredients</label>
+            <div id="ingredientRows"></div>
+            <button type="button" class="btn btn-ghost" id="addIngredient" style="padding-left:0;">+ Add ingredient</button>
+            <p class="error-msg">Add at least one ingredient.</p>
+          </div>
+
+          <div class="field" id="f-instructions">
+            <label for="instructions">Instructions</label>
+            <textarea id="instructions" name="instructions" placeholder="One step per line…" required minlength="10"></textarea>
+            <p class="error-msg">Describe at least one step.</p>
+          </div>
+
+          <div class="checkbox-row" style="margin-bottom:1.4rem;">
+            <input type="checkbox" id="agree" required>
+            <label for="agree" style="margin:0;font-weight:500;">I confirm this recipe is my own or I have permission to share it</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Publish Recipe</button>
+        </form>
+      </div>
+
+      <div>
+        <h2>My Recipes</h2>
+        <p class="muted">Saved locally on this device with Local Storage — clear your browser data to remove them.</p>
+        <div id="myRecipes"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom"><span>© 2026 YummyShare.</span></div>
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/create-recipe.js"></script>
+</body>
+</html>

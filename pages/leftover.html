@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leftover Finder — YummyShare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="blog.html">Blogs</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="leftover.html" aria-current="page">Leftovers</a>
+      <a href="create-recipe.html">Create</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" id="navAuthLink" class="btn btn-secondary" style="padding:.6rem 1.3rem;">Login</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:1rem;">
+    <div class="container">
+      <span class="eyebrow">Reduce food waste</span>
+      <h1>What's in your fridge?</h1>
+      <p>Tap the ingredients you already have and we'll rank recipes by how many of them you can use right now.</p>
+
+      <div class="geo-banner" id="geoBanner" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.4 7-12.5A7 7 0 0 0 5 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span id="geoText">Locating you…</span>
+      </div>
+      <button class="btn btn-secondary" id="geoBtn" style="margin-bottom:1.6rem;">📍 Find the nearest farmers market</button>
+
+      <label class="eyebrow" for="ingredientInput" style="display:block;">Type what's left in your fridge</label>
+      <form id="ingredientForm" class="tag-input-wrap" novalidate>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input
+          type="text"
+          id="ingredientInput"
+          placeholder="e.g. tomato, rice, leftover chicken — press Enter to add"
+          list="ingredientSuggestions"
+          autocomplete="off">
+        <datalist id="ingredientSuggestions"></datalist>
+        <button type="submit" class="btn btn-primary" id="addIngredientBtn" style="padding:.6rem 1.3rem;">Add</button>
+      </form>
+      <p class="hint" id="ingredientHint" style="margin:.4rem 0 1.1rem;">Separate multiple items with commas, or add one at a time.</p>
+
+      <div class="tag-list" id="pickedTags"></div>
+
+      <label class="eyebrow" style="display:block;margin-top:1.4rem;">Or tap a common leftover</label>
+      <div class="ingredient-picker" id="ingredientPicker"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <h2>Best matches</h2>
+      <p class="muted" id="matchSubline">Add a few ingredients above to see ranked recipes.</p>
+      <div id="matchResults" class="mt-lg"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom"><span>© 2026 YummyShare.</span></div>
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/icons.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/leftover.js"></script>
+</body>
+</html>

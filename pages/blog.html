@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogs — YummyShare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="blog.html" aria-current="page">Blogs</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="leftover.html">Leftovers</a>
+      <a href="create-recipe.html">Create</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" id="navAuthLink" class="btn btn-secondary" style="padding:.6rem 1.3rem;">Login</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:1rem;">
+    <div class="container">
+      <span class="eyebrow">Stories from the kitchen</span>
+      <h1>YummyShare Blog</h1>
+      <p>Technique, pantry-building and food-waste tips from our community of cooks — plus stories from readers like you.</p>
+      <button class="btn btn-warm" id="toggleWriteForm">✍️ Write a Blog</button>
+    </div>
+  </section>
+
+  <!-- ============ Write & Publish form (hidden until toggled) ============ -->
+  <section class="section" style="padding-top:0;display:none;" id="writeSection">
+    <div class="container">
+      <div class="form-panel" style="max-width:720px;">
+        <h2>Write a new post</h2>
+        <div class="form-success" id="blogSuccess">✓ <span>Published! Your post now appears below.</span></div>
+        <form id="blogForm" novalidate>
+
+          <div class="field" id="f-blogTitle">
+            <label for="blogTitle">Title</label>
+            <input type="text" id="blogTitle" required minlength="5" placeholder="e.g. Five Weeknight Dinners Under 20 Minutes">
+            <p class="error-msg">Give your post a title (at least 5 characters).</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field" id="f-blogCategory">
+              <label for="blogCategory">Category</label>
+              <select id="blogCategory" required>
+                <option value="">Select a category</option>
+                <option>Technique</option>
+                <option>Sustainability</option>
+                <option>Pantry</option>
+                <option>Culture</option>
+                <option>Reviews</option>
+              </select>
+              <p class="error-msg">Please choose a category.</p>
+            </div>
+            <div class="field" id="f-blogAuthor">
+              <label for="blogAuthor">Author name</label>
+              <input type="text" id="blogAuthor" required minlength="2" placeholder="Your name">
+              <p class="error-msg">Enter your name.</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="blogAccent">Accent colour</label>
+            <input type="color" id="blogAccent" value="#3FAE5C" style="height:44px;padding:.3rem;">
+            <p class="hint">Used for this post's colour strip on the blog grid.</p>
+          </div>
+
+          <div class="field" id="f-blogContent">
+            <label for="blogContent">Content</label>
+            <textarea id="blogContent" required minlength="20" placeholder="Share your story, tip or recipe technique…"></textarea>
+            <p class="error-msg">Write at least 20 characters.</p>
+          </div>
+
+          <div class="field">
+            <label for="blogAudio">Narration audio (optional)</label>
+            <!-- HTML5 file input scoped to audio files -->
+            <input type="file" id="blogAudio" accept="audio/*">
+            <p class="hint">Attach an MP3 reading of your post so visitors can listen instead of read.</p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Publish Post</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;">
+        <h2 style="margin-bottom:0;">Latest posts</h2>
+        <span class="pill-note" id="blogCount"></span>
+      </div>
+      <div class="container card-grid" id="blogGrid" style="padding:0;margin-top:1.4rem;"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Shared player for "Listen to this post" narration -->
+<audio id="blogAudioPlayer" preload="none"></audio>
+
+<footer class="site-footer">
+  <div class="container footer-bottom"><span>© 2026 YummyShare.</span></div>
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Responsive viewport: HTML5 feature -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YummyShare — Share Your Recipes</title>
+<meta name="description" content="Discover, cook and share recipes from Indian, Italian, Japanese and Korean kitchens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ Semantic <header> + <nav> ============ -->
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="pages/blog.html">Blogs</a>
+      <a href="pages/recipes.html">Recipes</a>
+      <a href="pages/leftover.html">Leftovers</a>
+      <a href="pages/create-recipe.html">Create</a>
+      <a href="pages/about.html">About Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="pages/login.html" id="navAuthLink" class="btn btn-secondary" style="padding:.6rem 1.3rem;">Login</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ Hero (CSS Grid + gradient + animation) ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="eyebrow">Cook. Share. Repeat.</span>
+        <h1>Share Your Recipes</h1>
+        <p>Looking for delicious meals without spending hours in the kitchen? Discover amazing recipes, share your culinary creations, and connect with food lovers across four cuisines.</p>
+        <div class="hero-actions">
+          <a href="pages/recipes.html" class="btn btn-primary">Get Started</a>
+          <a href="pages/create-recipe.html" class="btn btn-secondary">Upload Your Recipe</a>
+        </div>
+        <div class="stat-strip" id="homeStats">
+          <div><strong data-count="13">0</strong><span>Signature recipes</span></div>
+          <div><strong data-count="4">0</strong><span>World cuisines</span></div>
+          <div><strong data-count="2600">0</strong><span>Home cooks reached</span></div>
+        </div>
+      </div>
+      <div class="hero-art steam-wrap">
+        <svg class="leaf-deco leaf-1" viewBox="0 0 64 64"><path d="M8 56C6 30 22 8 56 8c2 26-14 48-48 48z" fill="#3FAE5C" opacity=".85"/></svg>
+        <svg class="leaf-deco leaf-2" viewBox="0 0 64 64"><path d="M8 56C6 30 22 8 56 8c2 26-14 48-48 48z" fill="#3FAE5C" opacity=".85"/></svg>
+        <!-- Canvas: animated steam rising off the plate, drawn with the Canvas API -->
+        <canvas id="steamCanvas" class="steam" width="90" height="90" aria-hidden="true"></canvas>
+        <div class="plate"><span class="plate-food"><img src="images/pasta.png"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Cuisines (CSS Grid) ============ -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">From four kitchens</span>
+      <h2>Explore a world of flavour</h2>
+      <div class="card-grid" id="cuisineGrid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));"></div>
+    </div>
+  </section>
+
+  <!-- ============ How it works (Flexbox cards, transforms on hover) ============ -->
+  <section class="section section--panel">
+    <div class="container">
+      <span class="eyebrow">Why YummyShare</span>
+      <h2>Built for real kitchens, not just recipe boxes</h2>
+      <div class="value-grid mt-lg">
+        <article class="value-card">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3>Search &amp; filter instantly</h3>
+          <p>Type an ingredient or cuisine and the results update live — no page reloads.</p>
+        </article>
+        <article class="value-card">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-8-8"/><path d="M20 4 12 12"/></svg>
+          </div>
+          <h3>Use what's already in your fridge</h3>
+          <p>Our leftover matcher ranks recipes by how many ingredients you already own.</p>
+        </article>
+        <article class="value-card">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.1-4.35-9.6-8.8C.9 8 2.1 4.6 5.4 3.7c2-.5 3.9.3 5 1.9 1.1-1.6 3-2.4 5-1.9 3.3.9 4.5 4.3 3 7.5C19.1 15.65 12 20 12 20z"/></svg>
+          </div>
+          <h3>Save favourites for later</h3>
+          <p>Tap the heart on any card — your favourites stay on this device via Local Storage.</p>
+        </article>
+        <article class="value-card">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <h3>Watch, don't just read</h3>
+          <p>Every recipe page includes a cooking video alongside written steps.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Newsletter form (HTML5 input types + validation) ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="form-panel form-panel--warm" style="max-width:640px;margin:0 auto;text-align:center;">
+        <h2>Get a new recipe in your inbox weekly</h2>
+        <p>No spam — just one seasonal recipe worth cooking.</p>
+        <form id="newsletterForm" novalidate>
+          <div style="display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;">
+            <input type="email" id="newsletterEmail" placeholder="you@example.com" required style="max-width:280px;">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+          <p class="error-msg" id="newsletterError" style="display:none;color:#FFE1CF;">Please enter a valid email address.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="index.html" class="logo"><span class="logo-yummy">Yummy</span><span class="logo-share">Share</span></a>
+      <p style="color:#B7B2A8;">A place to discover, cook and share recipes from kitchens around the world.</p>
+    </div>
+    <div><h4>Explore</h4>
+      <a href="pages/recipes.html">Recipes</a><a href="pages/blog.html">Blogs</a><a href="pages/create-recipe.html">Create</a>
+    </div>
+    <div><h4>Company</h4>
+      <a href="pages/about.html">About Us</a><a href="pages/leftover.html">Leftover Finder</a><a href="pages/login.html">Login</a>
+    </div>
+    <div><h4>Kitchen sounds</h4>
+      <button class="btn btn-ghost" id="audioToggle" style="color:#DCD8CF;padding-left:0;">▶ Play cooking playlist preview</button>
+      <!-- HTML5 <audio> element -->
+      <audio id="ambientAudio" preload="none" loop>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 YummyShare. Built as an HTML5 / CSS3 / JS demo.</span>
+    <span>Made for home cooks.</span>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/main.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
