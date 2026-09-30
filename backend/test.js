@@ -5,7 +5,7 @@ console.log('Running YummyShare tests...');
 
 // Test 1: server.js exists
 assert.strictEqual(
-  fs.existsSync('./wrong-file.js'),
+  fs.existsSync('./server.js'),
   true,
   'server.js should exist'
 );
